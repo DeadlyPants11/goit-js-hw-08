@@ -28,13 +28,11 @@ function populateForm() {
   const savedFormParams = localStorage.getItem(LOCALSTORAGE_KEY);
   if (savedFormParams === null) {
     return;
-  } else {
-    JSON.parse(savedFormParams);
-  }
+  } 
   try {
     formData = JSON.parse(savedFormParams);
-    Object.entries(formData).forEach(() => {
-      form.elements[name.value] = value;
+    Object.entries(formData).forEach(([name, value]) => {
+      form.elements[name].value = value;
     });
   } catch (error) {}
 }
